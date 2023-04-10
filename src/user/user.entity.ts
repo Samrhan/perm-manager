@@ -35,21 +35,23 @@ export class User {
   @OneToMany(() => Day, (a) => a.user)
   day: Day[];
 
-  getAvailableDays(): Date[] {
+  getAvailableDays(): string[] {
     return this.day
       ?.filter((a) => a.dayType === DayType.AVAILABILITY)
       .map((d) => d.date);
   }
 
-  getUnavailableDays(): Date[] {
+  getUnavailableDays(): string[] {
     return this.day
       ?.filter((a) => a.dayType === DayType.UNAVAILABILITY)
       .map((d) => d.date);
   }
 
-  getFavoriteDays(): Date[] {
+  getFavoriteDays(): string[] {
     return this.day
       ?.filter((a) => a.dayType === DayType.FAVORITE_AVAILABILITY)
       .map((d) => d.date);
   }
+
+  placed = false;
 }

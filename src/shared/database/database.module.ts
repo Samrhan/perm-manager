@@ -18,7 +18,7 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
         migrationsRun: true, // Execute migration at startup
         namingStrategy: new SnakeNamingStrategy(),
         migrations: ['dist/migrations/*.js'],
-        logging: process.env.NODE_ENV === 'production' ? ['error'] : 'all',
+        logging: ['error'],
       }),
     }),
   ],

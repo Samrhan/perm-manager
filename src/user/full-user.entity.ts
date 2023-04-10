@@ -8,7 +8,7 @@ export interface FullUser {
   firstname: string;
   priority: number;
   role: Role;
-  favoriteAvailability: Date[];
-  availability: Date[];
-  unavailability: Date[];
+  favoriteAvailability: string[];
+  availability: string[];
+  unavailability: string[];
 }

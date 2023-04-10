@@ -16,13 +16,8 @@ export class Day {
 
   @PrimaryColumn({
     type: 'date',
-    transformer: {
-      to: (value: Date) =>
-        `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`,
-      from: (value: string) => new Date(value),
-    },
   })
-  date: Date;
+  date: string;
 
   @Column({ enum: DayType, name: 'day_type' })
   dayType?: DayType;

@@ -6,20 +6,20 @@ export class Cycle {
   id: string;
 
   @Column({
-    type: 'timestamp',
+    type: 'date',
     transformer: {
       to: (value: Date) => value.toISOString(),
-      from: (value: string) => new Date(value),
+      from: (value: string) => value,
     },
   })
-  start: Date;
+  start: string;
 
   @Column({
-    type: 'timestamp',
+    type: 'date',
     transformer: {
       to: (value: Date) => value.toISOString(),
-      from: (value: string) => new Date(value),
+      from: (value: string) => value,
     },
   })
-  end: Date;
+  end: string;
 }

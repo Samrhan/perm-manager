@@ -6,10 +6,6 @@ export class Holiday {
   id: string;
   @Column({
     type: 'timestamp',
-    transformer: {
-      to: (value: Date) => value.toISOString(),
-      from: (value: string) => new Date(value),
-    },
   })
   start: Date;
 

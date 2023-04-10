@@ -32,10 +32,12 @@ export class UserService {
     return await this.userRepository.delete(id);
   }
 
-  async addAvailability(addAvailability: AddDay, favorite?: boolean) {
+  async addAvailability(addAvailability: AddDay) {
     return await this.addDay(
       addAvailability,
-      favorite ? DayType.FAVORITE_AVAILABILITY : DayType.AVAILABILITY,
+      addAvailability.favorite
+        ? DayType.FAVORITE_AVAILABILITY
+        : DayType.AVAILABILITY,
     );
   }
 
@@ -45,10 +47,7 @@ export class UserService {
 
   async addDay(addDay: AddDay, dayType: DayType) {
     const day = new Day();
-    day.date = new Date(addDay.day);
-    if (isNaN(day.date as any)) {
-      throw new BadRequestException('Invalid date, try with aaaa-mm-dd');
-    }
+    day.date = addDay.day;
 
     day.dayType = dayType;
     day.userId = (await this.userRepository.findOneOrFail(addDay.user)).id;

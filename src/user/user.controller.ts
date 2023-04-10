@@ -37,14 +37,8 @@ export class UserController {
   }
 
   @Put('availability')
-  async addAvailability(
-    @Body() addAvailability: AddDay,
-    @Query('favorite') favorite?: string,
-  ) {
-    return this.userService.addAvailability(
-      addAvailability,
-      !(favorite === 'false' || favorite === '0' || favorite === undefined),
-    );
+  async addAvailability(@Body() addAvailability: AddDay) {
+    return this.userService.addAvailability(addAvailability);
   }
 
   @Put('unavailability')
